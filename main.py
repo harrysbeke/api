@@ -1,5 +1,4 @@
 from fastapi import FastAPI
-import uvicorn
 import pickle
 import pandas as pd
 
