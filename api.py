@@ -7,7 +7,7 @@ data = pd.read_csv('https://github.com/harrysbeke/App/blob/481fe98a9283f474f45cb
 model = pickle.load(open('https://github.com/harrysbeke/App/blob/481fe98a9283f474f45cb4c824c8c4e0b60dc016/model.pkl', 'rb'))
 pipe = pickle.load(open('https://github.com/harrysbeke/App/blob/481fe98a9283f474f45cb4c824c8c4e0b60dc016/pipe.pkl', 'rb'))
 #Initialisation de l'api
-api = FastAPI()
+app = FastAPI()
 
 def get_prediction(user_id):
     df = data[data['SK_ID_CURR']==user_id]
@@ -18,17 +18,17 @@ def get_prediction(user_id):
     return int(prediction), float(probability)
 
 # Récupération
-@api.get('/')
+@app.get('/')
 async def test():
     return {'presentation':'Fermer'}
 
-@api.get('/test/{entier}')
+@app.get('/test/{entier}')
 async def preview(entier:int):
     result = get_prediction(entier)
     result = int(result)
     return {"id":result}
 
-@api.get('/prediction/{user_id}')
+@app.get('/prediction/{user_id}')
 async def prediction(user_id:int):
     user_id = int(user_id)
     prediction, probability = get_prediction(user_id)
