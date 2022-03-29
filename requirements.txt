@@ -16,3 +16,5 @@ six
 starlette
 websockets
 wrapt
+httptools
+uvloop
