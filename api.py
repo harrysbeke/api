@@ -3,9 +3,9 @@ import uvicorn
 import pickle
 import pandas as pd
 
-data = pd.read_csv('data_op.csv')
-model = pickle.load(open('model.pkl', 'rb'))
-pipe = pickle.load(open('pipe.pkl', 'rb'))
+data = pd.read_csv('https://github.com/harrysbeke/App/blob/481fe98a9283f474f45cb4c824c8c4e0b60dc016/data_op.csv')
+model = pickle.load(open('https://github.com/harrysbeke/App/blob/481fe98a9283f474f45cb4c824c8c4e0b60dc016/model.pkl', 'rb'))
+pipe = pickle.load(open('https://github.com/harrysbeke/App/blob/481fe98a9283f474f45cb4c824c8c4e0b60dc016/pipe.pkl', 'rb'))
 #Initialisation de l'api
 api = FastAPI()
 
@@ -36,5 +36,5 @@ async def prediction(user_id:int):
     #probability = float(probability)
     return {'prediction':prediction, 'probability':probability}
 
-if __name__ == '__main__':
-    uvicorn.run(api,host='127.0.0.1',port=8000)
+#if __name__ == '__main__':
+#   uvicorn.run(api,host='127.0.0.1',port=8000)
